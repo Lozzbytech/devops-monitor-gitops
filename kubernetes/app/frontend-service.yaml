@@ -4,7 +4,7 @@ metadata:
   name: devops-monitor-frontend
   namespace: devops-monitor
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     app: devops-monitor-frontend
   ports:
