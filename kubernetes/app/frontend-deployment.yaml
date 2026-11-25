@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-monitor-frontend
+  namespace: devops-monitor
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-monitor-frontend
+  template:
+    metadata:
+      labels:
+        app: devops-monitor-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: 024534508687.dkr.ecr.ap-south-1.amazonaws.com/devops-monitor-frontend:latest
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 80
+              protocol: TCP
+
+          env:
+            - name: BACKEND_SERVICE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: devops-monitor-config
+                  key: BACKEND_SERVICE_NAME
+
+            - name: BACKEND_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: devops-monitor-config
+                  key: BACKEND_PORT
+
+            - name: APP_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: devops-monitor-config
+                  key: APP_ENV
+
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "250m"
+              memory: "256Mi"
