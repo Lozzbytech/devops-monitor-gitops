@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: 024534508687.dkr.ecr.ap-south-1.amazonaws.com/devops-monitor-frontend:latest
+          image: 024534508687.dkr.ecr.ap-south-1.amazonaws.com/devops-monitor-frontend:c7d6f36743cd
           imagePullPolicy: Always
 
           ports:

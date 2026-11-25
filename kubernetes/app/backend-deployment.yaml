@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: 024534508687.dkr.ecr.ap-south-1.amazonaws.com/devops-monitor-backend:latest
+          image: 024534508687.dkr.ecr.ap-south-1.amazonaws.com/devops-monitor-backend:c7d6f36743cd
           imagePullPolicy: Always
 
           ports:
